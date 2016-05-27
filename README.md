@@ -6,13 +6,8 @@ Read the original blog post at:
 
 http://joelgrus.com/2016/02/27/trump-tweets-on-a-globe-aka-fun-with-d3-socketio-and-the-twitter-api/
 
-Original code:
-![tweets on a globe](https://raw.githubusercontent.com/joelgrus/twitter-globe/master/globe.gif)
 
-(Props to Mike Bostock's <a href = "http://bl.ocks.org/mbostock/4183330">World Tour</a>,
- from which I appropriated liberally.)
-
-Run it yourself with your favorite search phrase. First install the dependencies:
+First install the dependencies:
 
 ```bash
 $ npm install
@@ -38,7 +33,7 @@ $ node twitter-globe.js "search phrase goes here"
 Or the map app:
 
 ```bash
-$ node twitter-map.js "search phrase goes here"
+$ node twitter-map.js
 ```
 
 
