@@ -13,7 +13,7 @@ var express = require('express'),
 
 // Serve index.html at the root.
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/index-map.html');
 });
 
 // Serve static files in the public directory.
@@ -63,14 +63,13 @@ function average(coordinates) {
 }
 
 // Twitter stuff
-
 var Twitter = require('twitter'),
     credentials = require('./credentials.js'),
     client = new Twitter(credentials);
 
 var query = process.argv[2] || 'trump';
 
-client.stream('statuses/filter', {track: query}, function(stream) {
+client.stream('statuses/filter', {locations:"-79.15,35.6,-78.40,36.1"} , function(stream) {
   // Every time we receive a tweet...
   stream.on('data', function(tweet) {
     // ... that has the `place` field populated ...
@@ -83,8 +82,13 @@ client.stream('statuses/filter', {track: query}, function(stream) {
         placeName: tweet.place.full_name,
         latLong: average(tweet.place.bounding_box.coordinates),
       }
+
+
       // ... and notify the tweetEmitter.
-      tweetEmitter.emit('tweet', tweetSmall);
+      console.log(tweet.place.place_type + "," + tweet.place.bounding_box.coordinates);
+      if(tweet.place.place_type=="city") {
+        tweetEmitter.emit('tweet', tweetSmall);
+      }
     }
   });
 });

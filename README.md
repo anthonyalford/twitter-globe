@@ -1,11 +1,12 @@
-# Tweets on a Globe!
+# Tweets on a Map!
 
-Real-time visualization of geotagged tweets about a given topic, using d3, socket.io, and the Twitter API.
+Real-time visualization of geotagged tweets about a given topic using socket.io, and the Twitter API.
 
-Read all the gory details at:
+Read the original blog post at:
 
 http://joelgrus.com/2016/02/27/trump-tweets-on-a-globe-aka-fun-with-d3-socketio-and-the-twitter-api/
 
+Original code:
 ![tweets on a globe](https://raw.githubusercontent.com/joelgrus/twitter-globe/master/globe.gif)
 
 (Props to Mike Bostock's <a href = "http://bl.ocks.org/mbostock/4183330">World Tour</a>,
@@ -28,11 +29,18 @@ module.exports = {
 };
 ```
 
-then start it running:
+You can run the original globe app with this:
 
 ```bash
-$ node twitter.js "search phrase goes here"
+$ node twitter-globe.js "search phrase goes here"
 ```
+
+Or the map app:
+
+```bash
+$ node twitter-map.js "search phrase goes here"
+```
+
 
 and finally navigate your browser to `localhost:3000`.
 
