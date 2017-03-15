@@ -45,7 +45,8 @@ var tweetEmitter = new TweetEmitter();
 var io = require('socket.io')(http);
 
 tweetEmitter.on('tweet', function(tweet) {
-  console.log(tweet);
+  console.log(JSON.stringify(tweet));
+  console.log(',')
   io.emit('tweet', tweet);
 });
 
@@ -70,7 +71,7 @@ var Twitter = require('twitter'),
 
 var query = process.argv[2] || 'trump';
 
-client.stream('statuses/filter', {track: query}, function(stream) {
+  client.stream('statuses/filter', {track: query}, function(stream) {
   // Every time we receive a tweet...
   stream.on('data', function(tweet) {
     // ... that has the `place` field populated ...
@@ -86,5 +87,6 @@ client.stream('statuses/filter', {track: query}, function(stream) {
       // ... and notify the tweetEmitter.
       tweetEmitter.emit('tweet', tweetSmall);
     }
+
   });
 });

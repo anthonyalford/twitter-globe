@@ -20,8 +20,8 @@ app.get('/', function(req, res){
 app.use(express.static('public'));
 
 // Run on port 3000.
-http.listen(3000, function() {
-  console.log('listening on 3000');
+http.listen(80, function() {
+  console.log('listening on 80');
 });
 
 /**
@@ -68,8 +68,10 @@ var Twitter = require('twitter'),
     client = new Twitter(credentials);
 
 var query = process.argv[2] || 'trump';
+var raleigh = "-79.15,35.6,-78.40,36.1";
+var ruston =  "-95.00,31.0,-90.00,34.0";
 
-client.stream('statuses/filter', {locations:"-79.15,35.6,-78.40,36.1"} , function(stream) {
+client.stream('statuses/filter', {locations:ruston} , function(stream) {
   // Every time we receive a tweet...
   stream.on('data', function(tweet) {
     // ... that has the `place` field populated ...
